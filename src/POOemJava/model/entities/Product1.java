@@ -1,6 +1,6 @@
 package entities;
 
-public class Product {
+public class Product1 {
 	private String name;
 	private double price;
 	
@@ -17,7 +17,7 @@ public class Product {
 		this.price = price;
 	}
 	
-	public Product(String name, double price) {
+	public Product1(String name, double price) {
 		super();
 		this.name = name;
 		this.price = price;

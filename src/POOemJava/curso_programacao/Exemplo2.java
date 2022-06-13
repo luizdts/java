@@ -3,7 +3,7 @@ package curso_programacao;
 import java.util.Locale;
 import java.util.Scanner;
 
-import entities.Product;
+import entities.Product1;
 
 public class Exemplo2 {
 
@@ -13,14 +13,14 @@ public class Exemplo2 {
 		Scanner sc = new Scanner(System.in);
 		
 		int n = sc.nextInt();
-		Product[] vect = new Product[n];
+		Product1[] vect = new Product1[n];
 		
 		for(int i=0;i<vect.length;i++) {
 			sc.nextLine();
 			String name = sc.nextLine();
 			double price = sc.nextDouble();
 			
-			vect[i] = new Product(name, price);
+			vect[i] = new Product1(name, price);
 		}
 		
 		double sum = 0;
