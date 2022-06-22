@@ -2,7 +2,7 @@ package curso_programacao;
 
 import java.util.Scanner;
 
-import entities.Rectangle;
+import model.entities.Rectangle1;
 
 public class Exercicio1_POO {
 
@@ -10,7 +10,7 @@ public class Exercicio1_POO {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		Rectangle rectangle = new Rectangle();
+		Rectangle1 rectangle = new Rectangle1();
 		
 		System.out.println("Digite o valor da base: ");
 		rectangle.width = sc.nextDouble();

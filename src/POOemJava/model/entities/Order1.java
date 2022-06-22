@@ -1,8 +1,8 @@
-package entities;
+package model.entities;
 
 import java.util.Date;
 
-import entities.enums.OrderStatus1;
+import model.enums.OrderStatus1;
 
 public class Order1 {
 	

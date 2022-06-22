@@ -3,7 +3,7 @@ package curso_programacao;
 import java.util.Locale;
 import java.util.Scanner;
 
-import entities.Employee;
+import model.entities.Employee;
 
 public class Exercicio2_POO {
 

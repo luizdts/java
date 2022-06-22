@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-import entities.EmployeeList;
+import model.entities.EmployeeList;
 
 public class ExercicioLista {
 
