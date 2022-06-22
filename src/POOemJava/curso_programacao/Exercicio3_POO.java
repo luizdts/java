@@ -2,7 +2,7 @@ package curso_programacao;
 
 import java.util.Scanner;
 
-import entities.Student;
+import model.entities.Student;
 
 public class Exercicio3_POO {
 

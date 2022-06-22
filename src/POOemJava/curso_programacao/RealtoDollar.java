@@ -2,7 +2,7 @@ package curso_programacao;
 
 import java.util.Scanner;
 
-import entities.CurrencyConverter;
+import model.entities.CurrencyConverter;
 
 public class RealtoDollar {
 	

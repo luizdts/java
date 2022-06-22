@@ -3,7 +3,7 @@ package curso_programacao;
 import java.util.Locale;
 import java.util.Scanner;
 
-import entities.Product1;
+import model.entities.Product1;
 
 public class Exemplo2 {
 

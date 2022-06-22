@@ -3,7 +3,7 @@ package curso_programacao;
 import java.util.Locale;
 import java.util.Scanner;
 
-import entities.BankAccount;
+import model.entities.BankAccount;
 
 public class ExercicioFixacaoConstrutores {
 

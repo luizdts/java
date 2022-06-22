@@ -2,8 +2,8 @@ package curso_programacao;
 
 import java.util.Date;
 
-import entities.Order1;
-import entities.enums.OrderStatus1;
+import model.entities.Order1;
+import model.enums.OrderStatus1;
 
 public class Orders1 {
 

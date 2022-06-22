@@ -1,11 +1,11 @@
 package curso_programacao;
 
-import entities.Account;
-import entities.BusinessAccount;
-import entities.SavingsAccount;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import model.entities.Account;
+import model.entities.BusinessAccount;
+import model.entities.SavingsAccount;
 
 public class AccountOfBank {
     public static void main(String[] args){

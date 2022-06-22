@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-import entities.Circle;
-import entities.Rectangle;
-import entities.Shape;
-import entities.enums.Color;
+import model.entities.Circle;
+import model.entities.Rectangle;
+import model.entities.Shape;
+import model.enums.Color;
 
 public class ColorOfGeoms {
 
