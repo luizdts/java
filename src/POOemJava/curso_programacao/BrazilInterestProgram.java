@@ -1,4 +1,4 @@
-package application;
+package curso_programacao;
 
 import model.services.InterestService;
 import model.services.UsaInterestService;

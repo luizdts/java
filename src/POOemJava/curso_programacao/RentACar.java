@@ -1,4 +1,4 @@
-package application;
+package curso_programacao;
 
 import model.entities.CarRental;
 import model.entities.Vehicle;
