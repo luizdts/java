@@ -1,1 +1,1 @@
-Projeto 1 em Java - Xadrez
+Projeto de Xadrez utilizando Java.
