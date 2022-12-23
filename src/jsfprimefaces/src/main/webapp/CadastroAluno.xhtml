@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="WEB-INF/template/Layout.xhtml">
+
+	<ui:define name="header">
+		<div class="container" id="retangulo">
+			<div class="child">
+				<h2>Universidade Equipe Orbitais</h2>
+			</div>
+		</div>
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<f:metadata>
+			<f:viewAction action="#{pessoaControllerBean.findAll}" />
+			<f:viewAction action="#{alunoControllerBean.findAll}" />
+		</f:metadata>
+
+		<h2>
+			<h:outputText value="Cadastro de Aluno" />
+		</h2>
+
+		<h:form id="formCadastro">
+			<h:panelGrid id="cadastroGrid" columns="2">
+				<h:outputText value="Matrícula: " />
+				<p:inputText id="matricula" placeholder="Digite a matrícula"
+					size="30" value="#{alunoControllerBean.aluno.matricula}" />
+
+				<h:outputText value="Ano de entrada: " />
+				<p:inputText id="anoEntrada" placeholder="Digite o ano de entrada"
+					size="30" value="#{alunoControllerBean.aluno.anoDeEntrada}" />
+
+				<h:outputText value="ID da Pessoa:" />
+				<p:inputText id="idPessoa" placeholder="Digite o id"
+					value="#{alunoControllerBean.aluno.pessoa}" />
+
+			</h:panelGrid>
+
+			<p:commandButton value="Cadastrar"
+				action="#{alunoControllerBean.salvar}">
+				<f:ajax execute="cadastrar" render="cadastroGrid" />
+			</p:commandButton>
+
+			<span/>
+			
+			<p:commandButton value="Voltar"
+				action="#{alunoControllerBean.redirectListaAlunos}" />
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
