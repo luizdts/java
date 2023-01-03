@@ -2,11 +2,15 @@ package jsfprimefaces.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,7 +24,10 @@ public class Pessoa implements Serializable{
 	private String nome;
 	private String cpf;
 	
-	public Pessoa() {		
+	@OneToMany(mappedBy = "pessoa", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH})
+	private Set<Aluno> alunos;
+	
+	public Pessoa() {
 	}
 	
 	public Pessoa(Long id, String nome, String cpf) {
@@ -53,7 +60,12 @@ public class Pessoa implements Serializable{
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-
+	public Set<Aluno> getAlunos() {
+		return alunos;
+	}
+	public void setAlunos(Set<Aluno> alunos) {
+		this.alunos = alunos;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

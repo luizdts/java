@@ -1,18 +1,26 @@
-package jsfprimefaces.utils;
+/*package jsfprimefaces.utils;
 
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Disposes;
+import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class JpaUtil {
-	private static EntityManagerFactory factory;
+	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("projeto-jsf");
 	
 	
-	static {
-		factory = Persistence.createEntityManagerFactory("projeto-jsf");
+	@Produces
+	@RequestScoped
+	public EntityManager criarEntityManager() {
+		return emf.createEntityManager();
 	}
 	
-	public static EntityManager getEntityManager() {
-		return factory.createEntityManager();
- 	}
+	public void fecharEntityManager(@Disposes EntityManager em) {
+		if(em != null && em.isOpen()) {
+			em.close();
+		}
+	}
 }
+*/

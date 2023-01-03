@@ -7,16 +7,15 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import jsfprimefaces.entities.Aluno;
 import jsfprimefaces.entities.Pessoa;
 
-@FacesConverter("entityConverter")
-public class IdConverter implements Converter{
+@FacesConverter("pessoa-converter")
+public class PessoaConverter implements Converter{
 	
-	private List<Aluno> listaAlunos;
+	private List<Pessoa> listaPessoas;
 	
-	public IdConverter (List<Aluno> listaAlunos) {
-		this.listaAlunos = listaAlunos;
+	public PessoaConverter (List<Pessoa> listaPessoas) {
+		this.listaPessoas = listaPessoas;
 	}
 
 	@Override
@@ -27,9 +26,9 @@ public class IdConverter implements Converter{
 		
 		Long id = Long.valueOf(value);
 		
-		for(Aluno aluno: listaAlunos) {
-			if(id.equals(aluno.getId())){
-				return aluno;
+		for(Pessoa pessoa: listaPessoas) {
+			if(id.equals(pessoa.getId())){
+				return pessoa;
 			}
 		}
 		return null;
@@ -41,9 +40,9 @@ public class IdConverter implements Converter{
 			return null;
 		}
 		
-		Aluno aluno = (Aluno) value;
+		Pessoa pessoa = (Pessoa) value;
 		
-		return aluno.getId().toString();
+		return pessoa.getId().toString();
 	}
 	
 }

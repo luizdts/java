@@ -26,31 +26,29 @@
 
 		<h:form id="formCadastro">
 			<h:panelGrid id="cadastroGrid" columns="2">
-				<h:outputText value="Matrícula: " />
+				<h:outputText value="Matrícula: " for="matricula" />
 				<p:inputText id="matricula" placeholder="Digite a matrícula"
 					size="30" value="#{alunoControllerBean.aluno.matricula}" />
 
-				<h:outputText value="Ano de entrada: " />
+				<h:outputText value="Ano de entrada: " for="anoEntrada" />
 				<p:inputText id="anoEntrada" placeholder="Digite o ano de entrada"
 					size="30" value="#{alunoControllerBean.aluno.anoDeEntrada}" />
 
-				<h:outputText value="ID da Pessoa:" />
-				<p:inputText id="idPessoa" placeholder="Digite o id"
-					value="#{alunoControllerBean.aluno.pessoa}" />
+				<p:outputLabel value="ID " for="idPessoa" />
+					<p:inputText id="idPessoa"
+						value="#{alunoControllerBean.aluno.pessoa.id}" />
+					<h:outputLabel />
 
 			</h:panelGrid>
 
-			<p:commandButton value="Cadastrar"
-				action="#{alunoControllerBean.salvar}">
-				<f:ajax execute="cadastrar" render="cadastroGrid" />
-			</p:commandButton>
-
-			<span/>
-			
-			<p:commandButton value="Voltar"
-				action="#{alunoControllerBean.redirectListaAlunos}" />
-
+			<span />
+				<p:commandButton value="Cadastrar"
+					actionListener="#{alunoControllerBean.salvaAluno}"
+					update="formCadastro" process="formCadastro">
+					<f:ajax execute="cadastrar" render="cadastroGrid" />
+				</p:commandButton>
 		</h:form>
+
 	</ui:define>
 
 </ui:composition>

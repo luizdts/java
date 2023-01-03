@@ -3,9 +3,7 @@ package jsfprimefaces.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,11 +22,11 @@ public class Aluno implements Serializable{
 	private String matricula;
 	private String ano_de_entrada;
 	
-	@ManyToOne(cascade= CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name="id_pessoa")
+	@ManyToOne
+	@JoinColumn(name="id_pessoa", referencedColumnName = "id", nullable = true)
 	private Pessoa pessoa;
 	
-	public Aluno() {		
+	public Aluno() {
 	}
 	
 	public Aluno(Long id, String matricula, String anoDeEntrada) {

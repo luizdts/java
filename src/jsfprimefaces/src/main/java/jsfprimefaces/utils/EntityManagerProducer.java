@@ -1,3 +1,4 @@
+
 package jsfprimefaces.utils;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -11,20 +12,20 @@ import javax.persistence.Persistence;
 @ApplicationScoped
 public class EntityManagerProducer {
 
-	private EntityManagerFactory factory;
+    private EntityManagerFactory emf;
 
-	public EntityManagerProducer() {
-		this.factory = Persistence.createEntityManagerFactory("projeto-jsf");
-	}
+    public EntityManagerProducer() {
+        this.emf = Persistence.createEntityManagerFactory("projeto-jsf");
+    }
 
-	@Produces
-	@RequestScoped
-	public EntityManager createEntityManager() {
-		return factory.createEntityManager();
-	}
+    @Produces
+    @RequestScoped
+    public EntityManager createEntityManager() {
+        return this.emf.createEntityManager();
+    }
 
-	public void closeEntityManager(@Disposes EntityManager manager) {
-		manager.close();
-	}
+    public void closeEntityManager(@Disposes EntityManager em) {
+        em.close();
+    }
 
 }

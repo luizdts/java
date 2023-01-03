@@ -25,10 +25,18 @@
 
 			<p:toolbar>
 				<f:facet name="left">
-					<p:commandButton icon="fa-regular fa-pen-to-square"
+					<p:commandButton icon="fa fa-plus"
 						action="#{alunoControllerBean.redirectNovoAluno}" />
 					<h:outputText value=" Cadastrar novo aluno" />
+					
+					<p:commandButton value="Novo Aluno"
+					actionListener="#{alunoControllerBean.novoAluno}"
+					oncomplete="PF('cadastroDialogWidgetVar').show()"
+					update="cadastroDialog" process="@this">
+					<p:resetInput target="cadastroDialog" />
+				</p:commandButton>
 				</f:facet>
+				
 			</p:toolbar>
 
 			<p:dataTable id="alunosDataTable"
@@ -36,6 +44,10 @@
 				paginator="true" rows="10" paginatorPosition="bottom"
 				selectionMode="single" selection="#{alunoControllerBean.aluno}"
 				rowKey="#{alunos.id}">
+
+				<p:ajax event="rowSelect" update="form" />
+
+				<p:ajax event="rowUnselect" update="form" />
 
 				<p:column headerText="Matrícula" sortBy="#{aluno.matricula}">
 					<h:outputText value="#{alunos.matricula}" />
@@ -51,19 +63,58 @@
 				</p:column>
 
 				<p:column headerText="Ações">
-					<p:commandLink value="Editar" icon="fa fa-edit" action="#{alunoControllerBean.update}"
-						oncomplete="PF('editDialogWidgetVar').show()" process="@this" />
-
-					<span class="ui-separator"> <span
-						class="ui-icon-grip-dotted-vertical" />
-					</span>
-
-					<p:commandLink value="Excluir" action="#{alunoControllerBean.deletar(aluno.id)}"/>
-
+				
+					<p:commandButton title="Editar" value="Editar"
+						actionListener="#{alunoControllerBean.edicaoAluno}"
+						oncomplete="PF('cadastroDialogWidgetVar').show()"
+						process="@this">
+						
+					</p:commandButton>
+					<span></span>
+					<p:commandButton title="Excluir" value="Excluir"
+						actionListener="#{alunoControllerBean.delete}"
+						process="@this">
+						<p:confirm icon="ui-icon-alert" header="Confirmação de exclusão"
+							message="Deseja excluir o aluno de matrícula #{alunoControllerBean.aluno.matricula}?"></p:confirm>
+					</p:commandButton>
+					
 				</p:column>
 
 			</p:dataTable>
+			
+			<p:dialog id="cadastroDialog" header="Novo aluno"
+				widgetVar="cadastroDialogWidgetVar" modal="true" resizable="false"
+				closeOnEscape="true">
+				<p:messages id="alunoMessages" />
 
+				<p:defaultCommand target="salvarCommandButton" scope="cadastroDialog" />
+
+				<h:panelGrid id="cadastroPanelGrid" columns="2"
+					rendered="#{alunoControllerBean.aluno ne null}">
+					<p:outputLabel value="Matricula " for="matricula" />
+					<p:inputText id="matricula"
+						value="#{alunoControllerBean.aluno.matricula}" />
+
+					<p:outputLabel value="Ano de Entrada " for="anoDeEntrada" />
+					<p:inputText id="anoDeEntrada"
+						value="#{alunoControllerBean.aluno.anoDeEntrada}" />
+						
+					<p:outputLabel value="ID Pessoa: " for="idPessoa" />
+					<p:inputText id="idPessoa"
+						value="#{alunoControllerBean.aluno.pessoa.id}" />
+					<h:outputLabel />
+					
+					<p:commandButton id="salvarCommandButton" value="Salvar"
+						actionListener="#{alunoControllerBean.salvar}"
+						update="cadastroPanelGrid alunoMessages"
+						oncomplete="if (!args.validationFailed) PF('cadastroDialogWidgetVar').hide()"
+						process="cadastroDialog "/>
+						
+				</h:panelGrid>
+			</p:dialog>
+			
+			<h:outputText/>
+			
 		</h:form>
 
 	</ui:define>

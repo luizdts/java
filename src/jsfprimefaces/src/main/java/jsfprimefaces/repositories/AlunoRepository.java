@@ -31,10 +31,11 @@ public class AlunoRepository implements Serializable{
 	
 	
 	public void inserirAluno(Aluno aluno) {
-		em.persist(aluno);
+		em.merge(aluno);
 	}
 	
 	public void remover(Aluno aluno) {
+		aluno = findAluno(aluno.getId());
 		em.remove(aluno);
 	}
 	
